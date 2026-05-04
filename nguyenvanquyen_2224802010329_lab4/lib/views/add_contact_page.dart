@@ -15,9 +15,12 @@ class _AddContactPageState extends State<AddContactPage> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
-  // ADD FUNCTION
+   bool isSubmitting = false;
+
   void addContact() async {
-    if (_formKey.currentState!.validate()) {
+    if (_formKey.currentState!.validate() && !isSubmitting) {
+      setState(() => isSubmitting = true);
+
       await CRUDService().addContact(
         nameController.text.trim(),
         phoneController.text.trim(),
@@ -26,7 +29,8 @@ class _AddContactPageState extends State<AddContactPage> {
 
       if (!mounted) return;
 
-      Navigator.pop(context); // quay về Home ngay
+      // 👉 về Home luôn
+      Navigator.pushReplacementNamed(context, "/home");
     }
   }
 

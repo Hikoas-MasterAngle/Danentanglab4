@@ -38,7 +38,7 @@ class _UpdateContactPageState extends State<UpdateContactPage> {
 
       if (!mounted) return;
 
-      Navigator.pop(context); // quay về Home ngay
+     Navigator.pushReplacementNamed(context, "/home");
     }
   }
 
@@ -62,7 +62,7 @@ class _UpdateContactPageState extends State<UpdateContactPage> {
 
               if (!mounted) return;
 
-              Navigator.pop(context); // quay về Home
+                Navigator.pushReplacementNamed(context, "/home");
             },
             child: const Text(
               "Xóa",

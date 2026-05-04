@@ -50,4 +50,14 @@ class CRUDService {
         .doc(docID)
         .delete();
   }
+Future<bool> isContactExists(String phone) async {
+  var snapshot = await FirebaseFirestore.instance
+      .collection("users")
+      .doc(user!.uid)
+      .collection("contacts")
+      .where("phone", isEqualTo: phone)
+      .get();
+
+  return snapshot.docs.isNotEmpty;
+}
 }
